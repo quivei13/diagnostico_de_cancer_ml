@@ -14,11 +14,16 @@
 
         <h1>Predicción de Cáncer</h1>
 
-        <!-- Bloque de búsqueda -->
+        
         <form id="buscar-paciente-form">
-            <input type="text" id="rut" name="rut" placeholder="Ingrese el Rut del paciente" required>
-            <button type="submit">Buscar Paciente</button>
+            <label for="rut">Seleccione el Rut del paciente:</label>
+            <select id="rut" name="rut" required>
+                <!-- Opciones de pacientes se agregarán dinámicamente aquí -->
+            </select>
+            <button type="button" id="buscar-paciente-btn">Buscar Paciente</button>
         </form>
+
+
 
         <!-- Contenedor de la página -->
         <div class="pagina">

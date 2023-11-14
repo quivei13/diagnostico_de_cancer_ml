@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const XLSX = require('xlsx'); // Asegúrate de importar la biblioteca XLSX
 
 
 // Ruta para obtener todos los pacientes
@@ -123,6 +124,29 @@ router.get('/search', (req, res, next) => {
     res.json(results);
   });
 });
+
+
+
+
+
+// Ruta para obtener los datos del paciente por "rut"
+router.get('/:rut', (req, res) => {
+  const rut = req.params.rut;
+
+  // Leer el archivo resultados_prediccion.xlsx
+  const workbook = XLSX.readFile('C:/Users/joaco/OneDrive/Escritorio/RAMOS/CAPSTONE/Aplicacion/diagnostico_de_cancer/backend/frontend/resultados_prediccion.xlsx');
+  const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+
+  // Buscar el paciente por "rut"
+  const paciente = sheetData.find(row => row.rut === rut);
+
+  if (paciente) {
+      res.json(paciente);
+  } else {
+      res.status(404).json({ error: 'Paciente no encontrado' });
+  }
+});
+
 
 
 

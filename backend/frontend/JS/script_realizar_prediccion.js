@@ -27,42 +27,49 @@ botonCerrarSesion.addEventListener("click", function () {
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
-// ... (código anterior)
 
-// Reemplaza la parte de Fetch API con el siguiente código
-// Utiliza Fetch API para cargar los resultados desde el archivo excel
+
+
+// Obtén el elemento "rut" y el botón de búsqueda por su ID
+const rutSelect = document.getElementById("rut");
+const buscarPacienteBtn = document.getElementById("buscar-paciente-btn");
+
+// Cargar opciones de "rut" desde el archivo resultados_prediccion.xlsx
 fetch('../resultados_prediccion.xlsx')
     .then(response => response.arrayBuffer())
     .then(data => {
-        // Convierte el ArrayBuffer a una cadena binaria
         const binaryData = new Uint8Array(data);
         const dataString = String.fromCharCode.apply(null, binaryData);
-
-        // Parsea los datos de Excel usando xlsx
         const workbook = XLSX.read(dataString, { type: 'binary' });
+        const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+        
+        // Agregar opciones al elemento "rut"
+        sheetData.forEach(row => {
+            const option = document.createElement('option');
+            option.value = row.rut;
+            option.text = row.rut;
+            rutSelect.add(option);
+        });
+    })
+    .catch(error => console.error('Error al cargar opciones de "rut":', error));
 
-        // Obtén los datos de la primera hoja
-        const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]], { header: 1 });
+// Agregar un controlador de eventos al botón de búsqueda
+buscarPacienteBtn.addEventListener("click", function () {
+    // Obtén el valor seleccionado del campo "rut"
+    const selectedRut = rutSelect.value;
 
-        // Asegúrate de que haya al menos una fila en los resultados
-        if (sheetData.length > 0) {
-            // Asumimos que la primera fila contiene nombres de columnas
-            const columnNames = sheetData[0];
-
-            // Asumimos que la última fila contiene los resultados
-            const lastRow = sheetData[sheetData.length - 1];
-
+    // Realiza la solicitud al servidor para obtener los resultados del paciente
+    fetch(`/api/pacientes/${selectedRut}`)
+        .then(response => response.json())
+        .then(data => {
             // Muestra los resultados en el contenedor
             const resultadosContainer = document.getElementById('resultados-container');
             resultadosContainer.innerHTML = '<h2>Resultados de Predicciones:</h2>';
 
-            // Itera sobre las columnas y muestra los datos correspondientes
-            for (let i = 0; i < columnNames.length; i++) {
-                resultadosContainer.innerHTML += `<p>${columnNames[i]}: ${lastRow[i]}</p>`;
+            // Itera sobre las propiedades y muestra los datos correspondientes
+            for (const prop in data) {
+                resultadosContainer.innerHTML += `<p>${prop}: ${data[prop]}</p>`;
             }
-        } else {
-            console.error('El archivo Excel no contiene datos.');
-        }
-    })
-    .catch(error => console.error('Error al cargar los resultados:', error));
-
+        })
+        .catch(error => console.error('Error al cargar los resultados:', error));
+});

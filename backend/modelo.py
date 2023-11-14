@@ -32,6 +32,8 @@ nombres_columnas = [
 # Asigna los nombres de las columnas al DataFrame
 data_frame.columns = nombres_columnas
 
+data_frame = data_frame.drop(0)
+
 label_encoder = LabelEncoder()
 
 data_frame['cancer'] = label_encoder.fit_transform(data_frame['cancer'])
