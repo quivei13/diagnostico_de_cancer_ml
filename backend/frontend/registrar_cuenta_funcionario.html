@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Funcionario</title>
+    <link rel="stylesheet" href="CSS/registrar_funcionario.css"> 
+</head>
+<body>
+    
+    <div class="container">
+
+        <button id="boton-volver">Volver</button>
+
+        <h1>Registrar Funcionario</h1>
+
+        <!-- Formulario de registro de funcionario -->
+        <form id="registrar-funcionario-form">
+            <label for="rut">Rut:</label>
+            <input type="text" id="rut" name="rut" placeholder="Ejemplo: 12345678-9" required>
+
+            <label for="nombres">Nombre/s:</label>
+            <input type="text" id="nombres" name="nombres" required>
+
+            <label for="apellido-paterno">Apellido Paterno:</label>
+            <input type="text" id="apellido-paterno" name="apellido-paterno" required>
+
+            <label for="apellido-materno">Apellido Materno:</label>
+            <input type="text" id="apellido-materno" name="apellido-materno" required>
+
+            <label for="genero">Género:</label>
+            <select id="genero" name="genero">
+                <option value=""></option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+            </select>
+
+            <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+
+            <label for="mail">Correo Electrónico:</label>
+            <input type="email" id="mail" name="mail" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono">
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" required>
+
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" name="contraseña" required>
+
+            <label for="area/profesion">Area/Profesion:</label>
+            <input type="text" id="area/profesion" name="area/profesion" required>
+
+            <h4>Permisos</h4>
+            <label for="leer">
+                <input type="checkbox" id="leer" name="opcion" value="true">
+                Leer datos paciente
+            </label>
+        
+            <label for="registrar">
+                <input type="checkbox" id="registrar" name="opcion" value="true">
+                Registrar datos paciente
+            </label>
+
+            <label for="borrar">
+                <input type="checkbox" id="borrar" name="opcion" value="true">
+                Borrar datos paciente
+            </label>
+        
+            <label for="actualizar">
+                <input type="checkbox" id="actualizar" name="opcion" value="true">
+                Actualizar datos paciente
+            </label>
+
+            
+
+            <button type="button" id="boton-registrar">Registrar funcionario</button>
+
+            <button type="button" id="limpiar-campos">Limpiar Campos</button>
+
+
+            
+
+        </form>
+    </div>
+
+    <div> 
+        <button class="cerrar_sesion" id="cerrar-sesion">Cerrar Sesión</button>
+        <label for="cerrar-sesion" style="position: absolute; top: 20px; right: 180px;">Cuenta 1</label>
+    </div>
+    
+
+    <script src="JS/script_registrar_funcionario.js"></script>
+</body>
+</html>

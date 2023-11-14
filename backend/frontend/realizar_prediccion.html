@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Cáncer</title>
+    <link rel="stylesheet" href="CSS/realizar_prediccion.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+
+        <button id="boton-volver">Volver</button>
+
+        <h1>Predicción de Cáncer</h1>
+
+        <!-- Bloque de búsqueda -->
+        <form id="buscar-paciente-form">
+            <input type="text" id="rut" name="rut" placeholder="Ingrese el Rut del paciente" required>
+            <button type="submit">Buscar Paciente</button>
+        </form>
+
+        <!-- Contenedor de la página -->
+        <div class="pagina">
+            <!-- Agrega un elemento para mostrar los resultados -->
+            <div id="resultados-container"></div>
+        </div>
+
+    </div>
+
+    <div> 
+        <button class="cerrar_sesion" id="cerrar-sesion">Cerrar Sesión</button>
+        <label for="" style="position: absolute; top: 20px; right: 180px;">Cuenta 1</label>
+    </div>
+
+    <script src="JS/script_realizar_prediccion.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Paciente</title>
+    <link rel="stylesheet" href="CSS/registrar_paciente.css"> 
+</head>
+<body>
+    
+    <div class="container">
+
+        <button id="boton-volver">Volver</button>
+
+        <h1>Registrar Paciente</h1>
+
+        <!-- Formulario de registro de paciente -->
+        <form id="registrar-paciente-form">
+            <label for="rut">Rut:</label>
+            <input type="text" id="rut" name="rut" placeholder="Ejemplo: 12345678-9" required>
+
+            <label for="nombre">Nombre/s:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellido-paterno">Apellido Paterno:</label>
+            <input type="text" id="apellido-paterno" name="apellido-paterno" required>
+
+            <label for="apellido-materno">Apellido Materno:</label>
+            <input type="text" id="apellido-materno" name="apellido-materno" required>
+
+            <label for="genero">Género:</label>
+            <select id="genero" name="genero">
+                <option value=""></option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+            </select>
+
+            <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+
+            <label for="mail">Correo Electrónico:</label>
+            <input type="email" id="mail" name="mail" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono">
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" required>
+
+            <label for="diagnostico-inicial">Diagnóstico Inicial:</label>
+            <textarea id="diagnostico-inicial" name="diagnostico-inicial"></textarea>
+
+            <label for="radiografias">Radiografías:</label>
+            <input type="file" id="radiografia-imagen-input" name="radiografia-imagen-input" accept="image/*" style="display: none;">
+            <button type="button" id="cargar-imagen">Cargar Imagen seleccionada</button>
+            <img src="" alt="Vista previa de la imagen" id="imagen-previa" class="imagen_seleccionada">
+            <input type="text" id="radiografias" name="radiografias" readonly>
+
+            <label for="condiciones-fisicas">Condiciones Físicas:</label>
+            <textarea id="condiciones-fisicas" name="condiciones-fisicas"></textarea>
+
+            <label for="condiciones-ambientales">Condiciones Ambientales Actuales:</label>
+            <textarea id="condiciones-ambientales" name="condiciones-ambientales"></textarea>
+
+            <label for="datos-geneticos">Datos Genéticos y Moleculares:</label>
+            <textarea id="datos-geneticos" name="datos-geneticos"></textarea>
+
+            <label for="historia-medica">Historia Médica y Factores de Riesgo:</label>
+            <textarea id="historia-medica" name="historia-medica"></textarea>
+
+            
+
+
+            
+
+        </form>
+        <button type="button" id="boton-registrar">Registrar Paciente</button>
+
+        <button type="button" id="limpiar-campos">Limpiar Campos</button>
+    </div>
+
+    <div> 
+        <button class="cerrar_sesion" id="cerrar-sesion">Cerrar Sesión</button>
+        <label for="" style="position: absolute; top: 20px; right: 180px;">Cuenta 1</label>
+    </div>
+    
+
+    <script src="JS/script_registrar_paciente.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Paciente</title>
+    <link rel="stylesheet" href="CSS/buscar_paciente.css">
+</head>
+<body>
+    <div class="container">
+        <div class="superior">
+            <button id="boton-volver">Volver</button>
+
+            
+
+            <!-- Formulario de búsqueda de paciente -->
+            <form id="buscar-paciente-form">
+                <h1>Buscar Paciente</h1>
+                <label for="rut">Buscar por Rut:</label>
+                <input type="text" id="rut" name="rut" placeholder="Ingrese el Rut del paciente" required>
+                <button type="submit">Buscar por Rut</button>
+            </form>
+        </div>
+
+        <!-- Filtros de datos -->
+        <form id="form-filtros">
+            <div>
+                <label for="filtro-nombres">Filtrar por Nombre/s:</label>
+                <input type="checkbox" class="habilitar-input" data-target="filtro-nombres">
+                <input type="text" id="filtro-nombres" name="filtro-nombres" disabled>
+            </div>
+            <div>
+                <label for="filtro-apellido-paterno">Filtrar por Apellido Paterno:</label>
+                <input type="checkbox" class="habilitar-input" data-target="filtro-apellido-paterno">
+                <input type="text" id="filtro-apellido-paterno" name="filtro-apellido-paterno" disabled>
+            </div>
+            <div>
+                <label for="filtro-apellido-materno">Filtrar por Apellido Materno:</label>
+                <input type="checkbox" class="habilitar-input" data-target="filtro-apellido-materno"> 
+                <input type="text" id="filtro-apellido-materno" name="filtro-apellido-materno" disabled>
+            </div>
+            <div>
+                <label for="filtro-cancer-identificado">Filtrar por Cáncer Identificado:</label>
+                <input type="checkbox" class="habilitar-input" data-target="filtro-cancer-identificado">
+                <input type="text" id="filtro-cancer-identificado" name="filtro-cancer-identificado" disabled>
+            </div>
+            <div>
+                <label for="filtro-fecha-nacimiento">Filtrar por Fecha de nacimiento:</label>
+                <input type="checkbox" class="habilitar-input" data-target="filtro-fecha-nacimiento">
+                <input type="date" id="filtro-fecha-nacimiento" name="filtro-fecha-nacimiento" disabled>
+            </div>
+            <button type="submit" id="boton-buscar-filtros">Buscar por filtros</button>
+        </form>
+        
+
+        <!-- Tabla de pacientes -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr class="encabezado">
+                        <th>Rut</th>
+                        <th>Nombre/s</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Género</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Mail</th>
+                        <th>Telefono</th>
+                        <th>Edad</th>
+                        <th>Cancér Identificado</th>
+                        <th>Diagnostico inicial</th>
+                        <th>Radiografias</th>
+                        <th>Condiciones fisicas</th>
+                        <th>Condiciones Ambientales actuales</th>
+                        <th>Datos geneticos y moleculares</th>
+                        <th>Historia medica y Factores de riesgo</th>
+                        <!-- Agrega más encabezados de columnas según tus necesidades -->
+                    </tr>
+                    <!-- ejemplo -->
+                    <!-- <tr class="filas">
+                        <td>12345678-0</td> 
+                        <td>Julio Alejandro</td>
+                        <td>Iglesias</td>
+                        <td>Sanchez</td>
+                        <td>Masculino</td>
+                        <td>15-03-1980</td>
+                        <td>asanche@gmail.com</td>
+                        <td>549873542</td>
+                        <td>43</td>
+                        <td>Cancér de Pulmon</td>
+                        <td>Saludable</td>
+                        <td>No</td>
+                        <td>Normales</td>
+                        <td>Seco</td>
+                        <td>mutacion gen EGFR: las celulas cancerogenas crecen y se deividen</td>
+                        <td>Fuma 3 cigarros al dia</td>
+
+                        
+                    </tr> -->
+                </thead>
+                <tbody id="tabla-pacientes">
+                    <!-- Aquí se llenará la tabla con datos de pacientes -->
+                </tbody>
+            </table>
+        </div>
+
+        <div> 
+            <button class="cerrar_sesion" id="cerrar-sesion">Cerrar Sesión</button>
+            <label for="" style="position: absolute; top: 20px; right: 180px;">Cuenta 1</label>
+        </div>
+
+        
+    </div>
+
+    
+
+    <script src="JS/script_buscar_paciente.js"></script> 
+</body>
+</html>
