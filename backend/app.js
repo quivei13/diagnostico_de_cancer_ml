@@ -18,6 +18,7 @@ app.use(express.json());
 
 // Configura Express para servir archivos estáticos desde la carpeta 'frontend'
 app.use(express.static(path.join(__dirname, 'frontend')));
+app.use(express.static(path.join(__dirname, 'backend')));
 
 
 // Rutas
@@ -25,13 +26,13 @@ const pacientesRouter = require('./routes/pacientes'); // Crea este archivo y de
 const experienciaRouter = require('./routes/experiencia'); // Nueva ruta para la experiencia
 const funcionarioRouter = require('./routes/funcionario');
 const inicioSesionRouter = require('./routes/login');
-const prediccionRouter = require('./routes/prediccion');
+
 
 app.use('/api/pacientes', pacientesRouter);
 app.use('/api/experiencia', experienciaRouter); // Monta las rutas de experiencia en '/api/experiencia'
 app.use('/api/funcionario', funcionarioRouter);
 app.use('/api/login', inicioSesionRouter);
-app.use('/api/prediccion', prediccionRouter);
+
 
 
 // Manejo de errores
@@ -48,20 +49,29 @@ app.listen(port, () => {
 
 
 
-// Cargar modelo de ML y ejecutar script al iniciar la aplicación
-const { PythonShell } = require('python-shell');
+const { exec } = require('child_process');
 
 // Ruta completa al script de Python
 const scriptPath = path.join(__dirname, 'modelo.py');
 
+// Comando para ejecutar el script de Python
+const command = `${pythonPath} ${scriptPath}`;
 
-PythonShell.run(scriptPath, options, (err, results) => {
-    if (err) {
-        console.error(err);
-        // Manejar errores al cargar el modelo o ejecutar el script
-    } else {
-        console.log('Script de modelo.py ejecutado correctamente.');
-        // Puedes realizar más acciones después de ejecutar el script si es necesario
+// Ejecutar el comando
+exec(command, (error, stdout, stderr) => {
+    if (error) {
+        console.error(`Error al ejecutar el script de Python: ${error.message}`);
+        return;
     }
+    console.log('Script de modelo.py ejecutado correctamente.');
+    console.log(`Salida del script: ${stdout}`);
+    console.error(`Errores del script: ${stderr}`);
 });
+
+
+
+
+
+
+
 

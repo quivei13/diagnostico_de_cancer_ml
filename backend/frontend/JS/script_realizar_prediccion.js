@@ -35,7 +35,7 @@ const rutSelect = document.getElementById("rut");
 const buscarPacienteBtn = document.getElementById("buscar-paciente-btn");
 
 // Cargar opciones de "rut" desde el archivo resultados_prediccion.xlsx
-fetch('../resultados_prediccion.xlsx')
+fetch('../../resultados_prediccion.xlsx')
     .then(response => response.arrayBuffer())
     .then(data => {
         const binaryData = new Uint8Array(data);
@@ -64,7 +64,7 @@ buscarPacienteBtn.addEventListener("click", function () {
         .then(data => {
             // Muestra los resultados en el contenedor
             const resultadosContainer = document.getElementById('resultados-container');
-            resultadosContainer.innerHTML = '<h2>Resultados de Predicciones:</h2>';
+            resultadosContainer.innerHTML = '<h2>Resultados de Predicciones: (0 = Cancer de pulmon - 1 = Sin cancer) </h2>';
 
             // Itera sobre las propiedades y muestra los datos correspondientes
             for (const prop in data) {

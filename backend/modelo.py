@@ -7,7 +7,8 @@ from sklearn.metrics import accuracy_score, classification_report
 
 
 # Carga el archivo Excel en un DataFrame
-data_frame = pd.read_excel('C:/Users/joaco/OneDrive/Escritorio/RAMOS/CAPSTONE/Aplicacion/diagnostico_de_cancer/backend/datos_modelo.xlsx')
+data_frame = pd.read_excel(r'C:\Users\joaco\OneDrive\Escritorio\RAMOS\CAPSTONE\Aplicacion\diagnostico_de_cancer_ml\backend\datos_modelo.xlsx')
+
 
 # Define los nombres de las columnas
 nombres_columnas = [
@@ -32,7 +33,7 @@ nombres_columnas = [
 # Asigna los nombres de las columnas al DataFrame
 data_frame.columns = nombres_columnas
 
-data_frame = data_frame.drop(0)
+
 
 label_encoder = LabelEncoder()
 
@@ -98,5 +99,13 @@ print("Desviación estándar de la precisión: ", cv_scores.std())
 # Agregar predicciones al DataFrame original
 data_frame['Prediccion'] = rf_model.predict(X)
 
+# Crear un nuevo DataFrame solo con las columnas relevantes, incluida la columna de predicciones
+resultados_df = data_frame[["rut", "Prediccion"]]
+
 # Guardar el DataFrame con las predicciones en un archivo Excel
-data_frame.to_excel('C:/Users/joaco/OneDrive/Escritorio/RAMOS/CAPSTONE/Aplicacion/diagnostico_de_cancer/backend/frontend/resultados_prediccion.xlsx', index=False)
+resultados_df.to_excel('frontend/resultados_prediccion.xlsx', index=False)
+
+# Imprimir un mensaje indicando que el archivo se ha guardado
+print("Archivo 'resultados_prediccion.xlsx' guardado correctamente.")
+
+
