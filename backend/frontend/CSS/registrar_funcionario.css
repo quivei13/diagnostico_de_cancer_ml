@@ -61,6 +61,16 @@ button[type="button"] {
     cursor: pointer;
 }
 
+button#mostrar-contraseña {
+    background-color: rgb(134, 134, 134);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    max-width: 150px;
+}
+
 button#limpiar-campos {
     background-color: #c5a802;
     color: #fff;

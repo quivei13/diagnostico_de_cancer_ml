@@ -96,3 +96,30 @@ botonCerrarSesion.addEventListener("click", function () {
 
 
 
+
+document.addEventListener("DOMContentLoaded", function () {
+    // ... (código existente)
+
+    // Obtén el elemento donde mostrarás los permisos
+    const permisosUsuarioElement = document.getElementById("permisos-usuario");
+
+    // Realiza una solicitud al servidor para obtener los permisos del usuario
+    fetch("/api/funcionario/permisos", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        // Muestra los permisos en la interfaz de usuario
+        permisosUsuarioElement.innerText = `Permisos: Leer(${data.leer}), Registrar(${data.registrar}), Borrar(${data.borrar}), Actualizar(${data.actualizar})`;
+    })
+    .catch((error) => {
+        console.error("Error al obtener los permisos:", error);
+    });
+
+    // ... (código existente)
+});
+
+

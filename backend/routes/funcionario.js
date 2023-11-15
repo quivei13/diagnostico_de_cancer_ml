@@ -91,4 +91,41 @@ router.get('/:rut', (req, res, next) => {
 });
 
 
+
+
+
+
+// Ruta para obtener los permisos del usuario
+router.get('/permisos', (req, res, next) => {
+  // Obtén el ID del usuario autenticado (puedes obtenerlo de la sesión o del token, dependiendo de tu implementación)
+  const usuarioId = obtenerUsuarioId(req); // Implementa la función obtenerUsuarioId según tu lógica
+
+  // Realiza una consulta SQL para obtener los permisos del usuario
+  db.query('SELECT leer, registrar, borrar, actualizar FROM funcionario WHERE id = ?', [usuarioId], (err, results) => {
+    if (err) {
+      return next(err);
+    }
+
+    if (results.length === 0) {
+      // Si no se encontró el usuario, envía una respuesta con un mensaje de error
+      res.status(404).json({ error: 'Usuario no encontrado' });
+    } else {
+      // Si se encontró el usuario, envía los permisos como respuesta
+      res.json(results[0]);
+    }
+  });
+});
+
+// Función de ejemplo para obtener el ID del usuario autenticado
+function obtenerUsuarioId(req) {
+  // Aquí debes implementar la lógica para obtener el ID del usuario autenticado
+  // Puede ser a través de la sesión, el token JWT u otros métodos según tu implementación
+  // En este ejemplo, se asume que hay un campo "userId" en la sesión del usuario
+  return req.session.userId;
+}
+
 module.exports = router;
+
+
+
+

@@ -196,3 +196,22 @@ botonCerrarSesion.addEventListener("click", function () {
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
+//BOTON MOSTRAR CONTRASEÑA
+////////////////////////////////////////////////////////////////////////////////////////
+document.addEventListener("DOMContentLoaded", function () {
+  const contraseñaInput = document.getElementById("contraseña");
+  const mostrarContraseñaBtn = document.getElementById("mostrar-contraseña");
+
+  mostrarContraseñaBtn.addEventListener("click", function () {
+      // Cambia el tipo de entrada del campo de contraseña
+      if (contraseñaInput.type === "password") {
+          contraseñaInput.type = "text";
+      } else {
+          contraseñaInput.type = "password";
+      }
+  });
+});
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+
