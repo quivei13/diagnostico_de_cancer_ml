@@ -16,6 +16,9 @@ const options = {
 // Configura middleware para manejar solicitudes JSON
 app.use(express.json());
 
+
+
+
 // Configura Express para servir archivos estáticos desde la carpeta 'frontend'
 app.use(express.static(path.join(__dirname, 'frontend')));
 app.use(express.static(path.join(__dirname, 'backend')));

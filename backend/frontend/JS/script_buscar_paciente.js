@@ -268,12 +268,11 @@ buscarPacienteForm.addEventListener("submit", function (e) {
 ////////////////////////////////////////////////////////////////////////////////////////
 // Obtén el botón "Cerrar Sesión" por su ID
 const botonCerrarSesion = document.getElementById("cerrar-sesion");
-
 // Agrega un controlador de eventos al botón
 botonCerrarSesion.addEventListener("click", function () {
-  // Aquí debes realizar el cierre de sesión, por ejemplo, si estás utilizando cookies o sessionStorage, puedes borrar la información de sesión.
-  
-  // Luego, redirecciona a la página "index.html"
+  // Borra la información de la sesión
+  sessionStorage.removeItem("userId"); // Reemplaza "userId" con el nombre de tu clave de sesión
+  // Redirecciona a la página "index.html"
   window.location.href = "index.html";
 });
 ////////////////////////////////////////////////////////////////////////////////////////
